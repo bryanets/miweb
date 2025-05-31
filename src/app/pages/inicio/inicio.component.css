@@ -1,0 +1,140 @@
+.shadow-custom {
+  text-shadow: -1px 9px 11px rgba(62, 62, 62, 0.51);
+}
+
+.shadow-card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeinleft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeinright {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadein06 {
+  animation: fadein 0.6s ease-out forwards;
+}
+
+.fadein {
+  animation: fadein 1s ease-out forwards;
+}
+
+.fadeinleft {
+  animation: fadeinleft 1s ease-in-out;
+}
+
+.fadeinright {
+  animation: fadeinright 1s ease-in-out;
+}
+
+.animation {
+  animation: show ease-in-out 1s;
+  animation-timeline: view();
+  animation-range: entry 0%;
+}
+
+/* 1. Clases base para el estado inicial de los elementos a animar */
+.portfolio-description-container {
+  /*
+    Este div debe estar inicialmente fuera de la vista y transparente
+    Usamos `transform` para que la transición sea suave.
+    La transición es para cuando aparece/desaparece.
+  */
+  transform: translateY(100%); /* Comienza debajo de su posición final */
+  opacity: 0; /* Comienza transparente */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transición para aparecer/desaparecer */
+}
+
+.portfolio-icons-wrapper .portfolio-icon {
+  /* Los iconos individualmente también comienzan transparentes y debajo */
+  opacity: 0;
+  transform: translateY(20px); /* Ligeramente debajo de su posición final */
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Transición para cada icono */
+}
+
+/* 2. Estado al hacer hover en el contenedor principal */
+.portfolio-item:hover .portfolio-description-container {
+  transform: translateY(0); /* Vuelve a su posición final */
+  opacity: 1; /* Se vuelve completamente opaco */
+}
+
+/* 3. Animación escalonada para los iconos (usando keyframes si no quieres transiciones simples) */
+/*
+  Opción A: Usar delays en las transiciones al aplicar .is-visible
+  Esta es más sencilla con JS, pero si no quieres JS, usar keyframes
+  para cada icono es una opción.
+*/
+
+/* Animación para el primer icono */
+@keyframes fadeInIcon1 {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para el segundo icono */
+@keyframes fadeInIcon2 {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicar animaciones a los iconos al hacer hover */
+.portfolio-item:hover .portfolio-icons-wrapper .portfolio-icon:nth-child(1) {
+  animation: fadeInIcon1 0.3s ease-out forwards;
+  animation-delay: 0.3s; /* Comienza después de que la descripción haya aparecido un poco */
+}
+
+.portfolio-item:hover .portfolio-icons-wrapper .portfolio-icon:nth-child(2) {
+  animation: fadeInIcon2 0.3s ease-out forwards;
+  animation-delay: 0.4s; /* Comienza ligeramente después del primer icono */
+}

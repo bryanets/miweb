@@ -1,0 +1,62 @@
+<!-- MENU -->
+<!-- <section class="w-full py-6 shadow-md bg-white fixed top-0 z-10"> -->
+<header
+  [ngClass]="{
+    'bg-white top-0 left-0 right-0 z-50 shadow-md py-4 md:py-8': isScrolled,
+    'bg-transparent top-0 left-0 right-0 py-6 md:py-10': !isScrolled
+  }"
+  class="fixed transition-all duration-300 w-full"
+>
+  <nav class="container-custom flex justify-between">
+    <div class="block lg:hidden">
+      <p-button
+        (click)="visible = true"
+        [text]="true"
+        [plain]="true"
+        icon="fa-solid fa-bars"
+      />
+    </div>
+    <div>
+      <!--       <img
+        [src]="'images/logo.png'"
+        alt="logo"
+        class="w-14 h-auto object-contain"
+      /> -->
+      <p class="text-2xl font-medium">
+        <span class="text-orange-600 font-bold text-3xl">B</span>ryanets<i
+          class="fa-solid fa-code text-orange-600 ps-1"
+        ></i>
+      </p>
+    </div>
+    <div class="content-center">
+      <ul
+        class="hidden lg:flex lg:space-x-12 xl:space-x-16 text-teal-950 text-xl font-medium"
+      >
+        <li class="button"><a href="#inicio">Inicio</a></li>
+        <li class="button"><a href="#sobremi">Sobre mi</a></li>
+        <li class="button"><a href="#portafolio">Portafolio</a></li>
+        <li class="button"><a href="#servicios">Servicios</a></li>
+        <li class="button"><a href="#contactame">Contáctame</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!--   FIN MENU -->
+
+<!-- SIDEVAR -->
+
+<div class="card flex justify-center">
+  <p-drawer #drawerRef [(visible)]="visible">
+    <ng-template #headless>
+      <ul class="space-y-9 text-teal-950 font-medium flex flex-col mt-10 ms-5">
+        <li><a href="#inicio" (click)="hiddenSidebar()">Inicio</a></li>
+        <li><a href="#sobremi" (click)="hiddenSidebar()">Sobre mi</a></li>
+        <li><a href="#portafolio" (click)="hiddenSidebar()">Portafolio</a></li>
+        <li><a href="#servicios" (click)="hiddenSidebar()">Servicios</a></li>
+        <li><a href="#contactame" (click)="hiddenSidebar()">Contáctame</a></li>
+      </ul>
+    </ng-template>
+  </p-drawer>
+</div>
+<!-- FIN SIDEVAR -->

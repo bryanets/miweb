@@ -29,6 +29,6 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isScrolled = window.scrollY > 100; // Ajusta este valor según necesites
+    this.isScrolled = window.scrollY > 50; // Ajusta este valor según necesites
   }
 }
